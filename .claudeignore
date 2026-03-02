@@ -1,0 +1,14 @@
+# Secrets
+.env
+.env.local
+.env.production
+backend/.env
+frontend/.env.local
+
+# Large data (Claude Code doesn't need to read the entire GnuCOBOL source)
+data/gnucobol/
+
+# Dependencies
+backend/venv/
+frontend/node_modules/
+frontend/.next/
