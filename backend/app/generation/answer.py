@@ -78,3 +78,16 @@ class AnswerGenerator:
         ) as stream:
             async for text in stream.text_stream:
                 yield text
+
+    async def generate_with_prompt_stream(
+        self, system_prompt: str, user_message: str
+    ) -> AsyncIterator[str]:
+        """Stream a response with a custom system prompt and user message."""
+        async with self.async_client.messages.stream(
+            model=MODEL,
+            max_tokens=2048,
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_message}],
+        ) as stream:
+            async for text in stream.text_stream:
+                yield text
